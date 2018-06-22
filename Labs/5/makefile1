@@ -1,0 +1,18 @@
+#format is target-name: target dependencies
+#{-tab-}actions
+
+# All Targets
+all: myshell
+
+myshell:task1c.o
+	gcc -g -Wall -o myshell task1c.o
+
+task1c.o: task1c.c task1c.h
+	gcc -g -Wall -c -o task1c.o task1c.c 
+
+#tell make that "clean" is not a file name!
+.PHONY: clean
+
+#Clean the build directory
+clean: 
+	rm -f *.o myshell
